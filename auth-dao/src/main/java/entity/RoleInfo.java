@@ -16,12 +16,14 @@ public class RoleInfo {
     private int rid;
     private String rname;
     @Override
+
     public String toString() {
         return "RoleInfo{" +
                 "rid=" + rid +
                 ", rname='" + rname + '\'' +
                 '}';
     }
+
     public int getRid() {
         return rid;
     }
