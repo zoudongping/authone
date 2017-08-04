@@ -1,17 +1,27 @@
 package dao;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.io.Reader;
 
+=======
+>>>>>>> origin/master
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+
+
+=======
+import java.io.IOException;
+import java.io.Reader;
+
 public class SqlSessionHelper {
 	private static SqlSession session;
 	private static SqlSessionFactory factory;
-
+	
+>>>>>>> origin/master
 	static{
 		Reader r;
 		try {
@@ -21,8 +31,15 @@ public class SqlSessionHelper {
 		    factory=new SqlSessionFactoryBuilder().build(r);
 			System.out.println("Sqlsession工厂创建成功");
 		} catch (IOException e) {
+<<<<<<< HEAD
 			e.printStackTrace();
 		}
+=======
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+>>>>>>> origin/master
 	}
 	public static SqlSession getSqlSession(){
 		session=factory.openSession();
