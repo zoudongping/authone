@@ -28,8 +28,15 @@ public class SqlSessionHelper {
 
 	}
 	public static SqlSession getSqlSession(){
-		session=factory.openSession();
-		System.out.println("获取session对象成功");
+		if(session==null) {
+			session = factory.openSession();
+			System.out.println("获取session对象成功");
+		}
 		return session;
+	}
+	public static void closeSession(){
+		if(session!=null){
+			session.close();
+		}
 	}
 }

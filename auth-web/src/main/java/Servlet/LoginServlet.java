@@ -1,7 +1,8 @@
-package web;
+package Servlet;
 
 import dao.SqlSessionHelper;
 import dao.UserinfoDao;
+import entity.Userinfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,12 +14,23 @@ import java.io.IOException;
 /**
  * Created by THINK on 2017/8/4.
  */
-@WebServlet(name = "LoginServlet",value = "/loginservlet")
+@WebServlet(name = "LoginServlet",urlPatterns="/login")
 public class LoginServlet extends HttpServlet {
     UserinfoDao userinfoDao= SqlSessionHelper.getSqlSession().getMapper(UserinfoDao.class);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String uname=request.getParameter("name");
         String pwd=request.getParameter("pwd");
+        Userinfo u=new Userinfo();
+        u.setUname(uname);
+        u.setUpass(pwd);
+        Userinfo user=userinfoDao.findByUser(u);
+        if(user!=null){
+            request.getSession().setAttribute("user",user);
+            response.sendRedirect("index.jsp");
+        }
+        else response.sendRedirect("login.html");
+        SqlSessionHelper.closeSession();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

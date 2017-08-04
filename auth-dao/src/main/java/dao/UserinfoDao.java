@@ -10,5 +10,5 @@ public interface UserinfoDao {
     public Userinfo findUser(String uname);
     public boolean updatePwd(String uname, String oldpwd, String newpwd);
     public int deleteuser(String uname);
-    public boolean findByUser(String name,String pwd);
+    public Userinfo findByUser(Userinfo userinfo);
 }
