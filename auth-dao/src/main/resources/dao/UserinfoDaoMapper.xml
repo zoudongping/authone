@@ -5,14 +5,16 @@
     <!-- select标签专门指定查询方法,id代表方法名，
     parameterType代表方法的参数数据类型
     resultType代表方法的返回的集合中的元素类型-->
-    <select id="insertuser" parameterType="int" resultType="Userinfo">
+    <insert id="insertuser" parameterType="Userinfo">
         insert into userinfo values(#{uid},#{uname},#{upass},#{ustatus})
-    </select>
+    </insert>
 
     <select id="findUser" parameterType="String" resultType="Userinfo">
         select * from userinfo where uname=#{uname}
     </select>
-
+    <select id="findByUser" parameterType="Userinfo" resultType="Userinfo">
+        slsect * from userinfo where uname=#{uname} and upass=#{upass}
+    </select>
     <update id="updatePwd" parameterType="Userinfo">
         update userinfo set upass=#{newupass} where uname=#{uname} and upass=#{oldupass}
     </update>

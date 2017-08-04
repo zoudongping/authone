@@ -2,6 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties resource="db.properties"></properties>
+    <typeAliases>
+        <typeAlias type="entity.Userinfo" alias="Userinfo"/>
+        <typeAlias type="entity.RoleInfo" alias="RoleInfo"/>
+    </typeAliases>
     <environments default="one">
 
         <!-- 配置一个运行的环境，环境的编号为one -->
@@ -18,4 +22,8 @@
         </environment>
     </environments>
     <!-- 指定增删改查所需要 映射文件 -->
+    <mappers>
+        <mapper resource="dao/UserinfoDaoMapper.xml"/>
+        <mapper resource="dao/RoleInfoDaoMapper.xml"/>
+    </mappers>
 </configuration>
