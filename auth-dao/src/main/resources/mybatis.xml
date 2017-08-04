@@ -18,4 +18,8 @@
         </environment>
     </environments>
     <!-- 指定增删改查所需要 映射文件 -->
+    <mappers>
+        <mapper resource="dao/UserinfoDaoMapper.xml"/>
+        <mapper resource="dao/RoleiInfoDaoMapper.xml"/>
+    </mappers>
 </configuration>
