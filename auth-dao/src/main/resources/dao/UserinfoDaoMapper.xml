@@ -13,7 +13,7 @@
         select * from userinfo where uname=#{uname}
     </select>
     <select id="findByUser" parameterType="Userinfo" resultType="Userinfo">
-        slsect * from userinfo where uname=#{uname} and upass=#{upass}
+        select * from userinfo where uname=#{uname} and upass=#{upass}
     </select>
     <update id="updatePwd" parameterType="Userinfo">
         update userinfo set upass=#{newupass} where uname=#{uname} and upass=#{oldupass}

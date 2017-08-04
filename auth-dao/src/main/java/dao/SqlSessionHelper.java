@@ -38,5 +38,6 @@ public class SqlSessionHelper {
 		if(session!=null){
 			session.close();
 		}
+		session=null;
 	}
 }

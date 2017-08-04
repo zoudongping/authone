@@ -16,8 +16,9 @@ import java.io.IOException;
  */
 @WebServlet(name = "LoginServlet",urlPatterns="/login.do")
 public class LoginServlet extends HttpServlet {
-    UserinfoDao userinfoDao= SqlSessionHelper.getSqlSession().getMapper(UserinfoDao.class);
+    UserinfoDao userinfoDao;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        userinfoDao= SqlSessionHelper.getSqlSession().getMapper(UserinfoDao.class);
         request.setCharacterEncoding("UTF-8");
         String uname=request.getParameter("name");
         String pwd=request.getParameter("pwd");
