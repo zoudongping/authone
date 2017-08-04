@@ -8,8 +8,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>auth-web</artifactId>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
@@ -21,6 +21,11 @@
             <groupId>com.hzit.thirdgroup</groupId>
             <artifactId>auth-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
     </dependencies>
 

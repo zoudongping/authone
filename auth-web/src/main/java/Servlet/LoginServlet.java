@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by THINK on 2017/8/4.
  */
-@WebServlet(name = "LoginServlet",urlPatterns="/login")
+@WebServlet(name = "LoginServlet",urlPatterns="/login.do")
 public class LoginServlet extends HttpServlet {
     UserinfoDao userinfoDao= SqlSessionHelper.getSqlSession().getMapper(UserinfoDao.class);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
