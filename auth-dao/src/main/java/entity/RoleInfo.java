@@ -24,6 +24,7 @@ public class RoleInfo {
                 '}';
     }
 
+
     public int getRid() {
         return rid;
     }
