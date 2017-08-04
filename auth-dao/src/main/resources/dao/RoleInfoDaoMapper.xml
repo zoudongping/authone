@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
         <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.RoleInfoDao">
-<select id="findAll" resultType="RoleInfo">
-    select * from roleinfo
-</select>
+
+    <select id="findAll" resultType="RoleInfo">
+        select * from roleinfo
+    </select>
+
+    <select id="findByRid" resultType="RoleInfo">
+        select * from roleinfo WHERE rid=#{rid}
+    </select>
+
+    <select id="findByRname" resultType="RoleInfo">
+        select * from roleinfo WHERE rname=#{rname}
+    </select>
+
+    <insert id="insertRoleInfo" parameterType="RoleInfo">
+        INSERT INTO roleinfo VALUES(#{rid},#{rname})
+    </insert>
+
+    <delete id="deleteRoleInfo" parameterType="int">
+        DELETE FROM roleinfo WHERE rid=#{rid}
+    </delete>
+
+    <update id="updateRoleInfo" parameterType="RoleInfo">
+        UPDATE roleinfo SET rid=#{rid},rname=#{rname} WHERE rid=#{rid}
+    </update>
+
 </mapper>
