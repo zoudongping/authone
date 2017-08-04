@@ -25,4 +25,5 @@
     <update id="updateRoleInfo" parameterType="RoleInfo">
         UPDATE roleinfo SET rid=#{rid},rname=#{rname} WHERE rid=#{rid}
     </update>
+
 </mapper>
