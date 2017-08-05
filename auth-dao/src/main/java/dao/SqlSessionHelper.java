@@ -22,7 +22,6 @@ public class SqlSessionHelper {
 		    factory=new SqlSessionFactoryBuilder().build(r);
 			System.out.println("Sqlsession工厂创建成功");
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		}
 
