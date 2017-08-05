@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
       <a href="#" class="topbar-logo fl">
         <span><img src="Images/logo.png" width="20" height="20"/></span>
       </a>
-      <a href="index.html" class="topbar-home-link topbar-btn text-center fl"><span>管理权限管理系统</span></a>
+      <a href="resource.html" class="topbar-home-link topbar-btn text-center fl"><span>管理权限管理系统</span></a>
     </div>
   </div>
   <div class="topbar-info">
@@ -32,7 +33,7 @@
       <li class="fl topbar-info-item">
         <div class="dropdown">
           <a href="#" class="topbar-btn">
-            <span class="fl text-normal">小朱</span>
+            <span class="fl text-normal">${user.uname}</span>
             <span class="icon-arrow-down"></span>
           </a>
           <ul class="dropdown-menu">
@@ -47,73 +48,33 @@
   <div class="view-sidebar">
     <div class="sidebar-content">
       <!--一级菜单循环从这里开始 ，动态循环显示一级菜单-->
-      <div class="sidebar-nav">
-        <div class="sidebar-title">
-          <a href="#">
-            <span class="icon"><b class="fl icon-arrow-down"></b></span>
-            <span class="text-normal">一级菜单</span>
-          </a>
-        </div>
-        <ul class="sidebar-trans">
-          <!--二级菜单循环从这里开始 ，动态循环显示二级菜单-->
-          <li>
-            <a href="#">
-              <b class="sidebar-icon"><img src="Images/icon_author.png" width="16" height="16" /></b>
-              <span class="text-normal">二级菜单</span>
-            </a>
-          </li>
-          <!--二级菜单循环从这里结束 ，动态循环显示二级菜单-->
-          <li>
-            <a href="#">
-              <b class="sidebar-icon"><img src="Images/icon_author.png" width="16" height="16" /></b>
-              <span class="text-normal">二级菜单</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <b class="sidebar-icon"><img src="Images/icon_author.png" width="16" height="16" /></b>
-              <span class="text-normal">二级菜单</span>
-            </a>
-          </li>
-
-
-        </ul>
-      </div>
-      <!--一级菜单循环从这里结束 ，动态循环显示一级菜单-->
-      <!--一级菜单循环从这里开始 ，动态循环显示一级菜单-->
-      <div class="sidebar-nav">
-        <div class="sidebar-title">
-          <a href="#">
-            <span class="icon"><b class="fl icon-arrow-down"></b></span>
-            <span class="text-normal">一级菜单</span>
-          </a>
-        </div>
-        <ul class="sidebar-trans">
-          <!--二级菜单循环从这里开始 ，动态循环显示二级菜单-->
-          <li>
-            <a href="#">
-              <b class="sidebar-icon"><img src="Images/icon_author.png" width="16" height="16" /></b>
-              <span class="text-normal">二级菜单</span>
-            </a>
-          </li>
-          <!--二级菜单循环从这里结束 ，动态循环显示二级菜单-->
-          <li>
-            <a href="#">
-              <b class="sidebar-icon"><img src="Images/icon_author.png" width="16" height="16" /></b>
-              <span class="text-normal">二级菜单</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <b class="sidebar-icon"><img src="Images/icon_author.png" width="16" height="16" /></b>
-              <span class="text-normal">二级菜单</span>
-            </a>
-          </li>
-
-
-        </ul>
-      </div>
-      <!--一级菜单循环从这里结束 ，动态循环显示一级菜单-->
+      <c:forEach var="r" items="${relist}">
+        <c:if test="${r.parentID==null}">
+          <div class="sidebar-nav">
+            <div class="sidebar-title">
+              <a href="#">
+                <span class="icon"><b class="fl icon-arrow-down"></b></span>
+                <span class="text-normal">${r.rname}</span>
+              </a>
+            </div>
+            <ul class="sidebar-trans">
+              <!--二级菜单循环从这里开始 ，动态循环显示二级菜单-->
+              <c:forEach var="sec_r" items="${relist}">
+                <c:if test="${sec_r.parentId==r.rid}">
+                  <li>
+                    <a href="${sec_r.resurl}">
+                      <b class="sidebar-icon"><img src="Images/icon_author.png" width="16" height="16"/></b>
+                      <span class="text-normal">${sec_r.rname}</span>
+                    </a>
+                  </li>
+                </c:if>
+              </c:forEach>
+              <!--二级菜单循环从这里结束 ，动态循环显示二级菜单-->
+            </ul>
+          </div>
+        </c:if>
+        <!--一级菜单循环从这里结束 ，动态循环显示一级菜单-->
+      </c:forEach>
     </div>
   </div>
   <div class="view-product">
@@ -147,21 +108,32 @@
               </div>
             </div>
             <div class="tr clearfix border-bottom-none">
-              <div class="td w20">
-                吴文杰
-              </div>
-              <div class="td w20">
-                管理员
-              </div>
-              <div class="td w20">
-                水电费
-              </div>
-              <div class="td w20">
-                2016-01-10 11:54:07
-              </div>
-              <div class="td w20">
-                <a href="#"  class="button-word2 btn_ajax_confirm">删除</a>
-              </div>
+              <c:forEach var="user" items="${userlist}">
+                <div class="tr clearfix border-bottom-none">
+                  <div class="td w20">
+                      ${user.uname}
+                  </div>
+                  <c:if test="${user.rname==null}">
+                    <div class="td w20">
+                      无
+                    </div>
+                  </c:if>
+                  <c:if test="${user.rname!=null}">
+                    <div class="td w20">
+                        ${user.rname}
+                    </div>
+                  </c:if>
+                  <div class="td w20">
+                      ${user.ustatus}
+                  </div>
+                  <div class="td w20">
+                      ${user.createTime}
+                  </div>
+                  <div class="td w20">
+                    <a href="deleteUserById?userId=${user.uid}" class="button-word2 btn_ajax_confirm">删除</a>
+                  </div>
+                </div>
+              </c:forEach>
             </div>
           </div>
         </div>
@@ -169,7 +141,7 @@
           <div class="page">
             <div class="page">
               <ul class="offcial-page margin-top margin-big-right">
-                <li>共<em class="margin-small-left margin-small-right">1</em>条数据</li>
+                <li>共<em class="margin-small-left margin-small-right">${userlist.size()}</em>条数据</li>
                 <li>每页显示<em class="margin-small-left margin-small-right">15</em>条</li>
                 <li><a class="next disable">上一页</a></li>
                 <li></li>

@@ -15,11 +15,13 @@ import java.util.List;
 /**
  * Created by THINK on 2017/8/4.
  */
-@WebServlet(name = "ResourceServlet")
+@WebServlet(name = "ResourceServlet",urlPatterns = "/resourceservlet")
 public class ResourceServlet extends HttpServlet {
-    ResourccesDao resourccesDao= SqlSessionHelper.getSqlSession().getMapper(ResourccesDao.class);
+    ResourccesDao resourccesDao;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        resourccesDao= SqlSessionHelper.getSqlSession().getMapper(ResourccesDao.class);
         List<Resourcces> all=resourccesDao.findAll();
+        SqlSessionHelper.closeSession();
         request.setAttribute("all",all);
         response.sendRedirect("resource.jsp");
     }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by THINK on 2017/8/4.
@@ -28,7 +29,7 @@ public class LoginServlet extends HttpServlet {
         Userinfo user=userinfoDao.findByUser(u);
         if(user!=null){
             request.getSession().setAttribute("user",user);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("getResourcesByUser");
         }
         else response.sendRedirect("login.html");
         SqlSessionHelper.closeSession();

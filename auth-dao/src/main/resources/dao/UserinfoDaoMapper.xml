@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- mapper标签用于指定配置文件所属的接口名，通过namespace来指定 -->
 <mapper namespace="dao.UserinfoDao">
+    <resultMap id="userinfoMap" type="Userinfo" >
+        <id property="uid" column="uid"/>
+        <result property="uname" column="uname"/>
+        <result property="upass" column="upass"/>
+        <result property="ustatus" column="ustatus"/>
+        <result property="createTime" column="createTime"/>
+    </resultMap>
     <!-- select标签专门指定查询方法,id代表方法名，
     parameterType代表方法的参数数据类型
     resultType代表方法的返回的集合中的元素类型-->
@@ -14,6 +21,10 @@
     </select>
     <select id="findByUser" parameterType="Userinfo" resultType="Userinfo">
         select * from userinfo where uname=#{uname} and upass=#{upass}
+    </select>
+    <select id="findAllUser" resultType="entity.UserInfoVo">
+        SELECT userinfo.*,roleinfo.`rname` FROM userinfo LEFT JOIN urinfo ON userinfo.`uid`=urinfo.`uid`
+			LEFT JOIN roleinfo ON roleinfo.`rid`=urinfo.`rid`
     </select>
     <update id="updatePwd" parameterType="Userinfo">
         update userinfo set upass=#{newupass} where uname=#{uname} and upass=#{oldupass}

@@ -30,8 +30,7 @@
         select * from resourcces where rname=#{rname}
     </select>
 <select id="findResourccesByUid" resultType="Resourcces" parameterType="int">
-    select *  from  resourcces WHERE
-    rid in (select resourceid from roleresource where
-    roleid in (select rid from urinfo where uid=#{uid} ) )
+SELECT * FROM resourcces
+WHERE rid IN (SELECT resourceid FROM `roleresource` WHERE roleid IN (SELECT  rid FROM urinfo WHERE uid=#{uid}  ) )
 </select>
 </mapper>

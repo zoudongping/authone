@@ -31,7 +31,7 @@
       <li class="fl topbar-info-item">
         <div class="dropdown">
           <a href="#" class="topbar-btn">
-            <span class="fl text-normal">小朱</span>
+            <span class="fl text-normal">${user.uname}</span>
             <span class="icon-arrow-down"></span>
           </a>
           <ul class="dropdown-menu">
@@ -46,7 +46,7 @@
   <div class="view-sidebar">
     <div class="sidebar-content">
       <!--一级菜单循环从这里开始 ，动态循环显示一级菜单-->
-      <c:forEach var="r" items="${reslist}">
+      <c:forEach var="r" items="${relist}">
         <c:if test="${r.parentId==null}">
           <div class="sidebar-nav">
             <div class="sidebar-title">
@@ -57,7 +57,7 @@
             </div>
             <ul class="sidebar-trans">
               <!--二级菜单循环从这里开始 ，动态循环显示二级菜单-->
-              <c:forEach var="sec_r" items="${reslist}">
+              <c:forEach var="sec_r" items="${relist}">
                 <c:if test="${sec_r.parentId==r.rid}">
                   <li>
                     <a href="#">
@@ -101,25 +101,31 @@
               资源序号
             </div>
             <div class="th w20">
-              资源序号
+              创建时间
+            </div>
+            <div class="th w5">
+              操作
             </div>
           </div>
           <c:forEach var="r" items="${all}">
             <div class="tr clearfix border-bottom-none">
-              <div class="td w20">
+              <div class="td w10">
                   ${r.rname}
               </div>
-              <div class="td w20">
+              <div class="td w30">
                   ${r.resurl}
               </div>
-              <div class="td w20">
+              <div class="td w25">
                   ${r.redsdes}
               </div>
-              <div class="td w20">
+              <div class="td w10">
                   ${r.resorderno}
               </div>
-
               <div class="td w20">
+                <a href="#" class="button-word2 btn_ajax_confirm">${r.createTime}</a>
+              </div>
+              <div class="td w5">
+                <a href="#" class="button-word2 btn_ajax_confirm">编辑</a> |
                 <a href="#" class="button-word2 btn_ajax_confirm">删除</a>
               </div>
             </div>
