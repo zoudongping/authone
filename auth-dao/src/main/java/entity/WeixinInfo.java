@@ -4,24 +4,24 @@ package entity;
  * Created by 李晨曦 2017年08月07日
  */
 public class WeixinInfo {
-    private int weixinhao;
+    private String weixinhao;
     private String weixinnicheng;
     private String weixinimage;
-
-    public int getWeixinhao() {
-        return weixinhao;
-    }
 
     @Override
     public String toString() {
         return "WeixinInfo{" +
-                "weixinhao=" + weixinhao +
+                "weixinhao='" + weixinhao + '\'' +
                 ", weixinnicheng='" + weixinnicheng + '\'' +
                 ", weixinimage='" + weixinimage + '\'' +
                 '}';
     }
 
-    public void setWeixinhao(int weixinhao) {
+    public String getWeixinhao() {
+        return weixinhao;
+    }
+
+    public void setWeixinhao(String weixinhao) {
         this.weixinhao = weixinhao;
     }
 

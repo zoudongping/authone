@@ -8,6 +8,12 @@
         <result property="upass" column="upass"/>
         <result property="ustatus" column="ustatus"/>
         <result property="createTime" column="createTime"/>
+
+        <association property="weixinInfo" javaType="entity.WeixinInfo">
+            <id column="weixinhao" property="weixinhao"></id>
+            <result column="weixinicheng" property="weixinicheng"></result>
+            <result column="weixinimage" property="weixinimage"></result>
+        </association>
     </resultMap>
     <!-- select标签专门指定查询方法,id代表方法名，
     parameterType代表方法的参数数据类型
@@ -38,19 +44,6 @@
         SELECT * FROM userinfo A LEFT JOIN weixininfo B ON A.weixinhao=B.weixinhao WHERE a.uid=#{uid}
     </select>
 
-    <resultMap id="userinfoMap" type="Userinfo">
-        <id column="uid" property="uid"></id>
-        <result column="uname" property="uname"></result>
-        <result column="upass" property="upass"></result>
-        <result column="ustatus" property="ustatus"></result>
-        <result column="createTime" property="createTime"></result>
-
-        <association property="weixinInfo" javaType="entity.WeixinInfo">
-            <id column="weixinhao" property="weixinhao"></id>
-            <result column="weixinicheng" property="weixinicheng"></result>
-            <result column="weixinimage" property="weixinimage"></result>
-        </association>
-    </resultMap>
 
 
 
