@@ -13,11 +13,11 @@ public class Userinfo {
     @Override
     public String toString() {
         return "Userinfo{" +
-                "uid=" + uid +
-                ", createTime='" + createTime + '\'' +
+                "uid=" + uid + '\'' +
                 ", uname='" + uname + '\'' +
                 ", upass='" + upass + '\'' +
                 ", ustatus='" + ustatus + '\'' +
+                ", createTime='" + createTime +
                 '}';
     }
 
