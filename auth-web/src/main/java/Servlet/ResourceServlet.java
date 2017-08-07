@@ -23,7 +23,7 @@ public class ResourceServlet extends HttpServlet {
         List<Resourcces> all=resourccesDao.findAll();
         SqlSessionHelper.closeSession();
         request.setAttribute("all",all);
-        response.sendRedirect("resource.jsp");
+        request.getRequestDispatcher("resource.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

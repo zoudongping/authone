@@ -24,7 +24,7 @@
       <a href="#" class="topbar-logo fl">
         <span><img src="Images/logo.png" width="20" height="20"/></span>
       </a>
-      <a href="resource.html" class="topbar-home-link topbar-btn text-center fl"><span>管理权限管理系统</span></a>
+      <a href="/resourceservlet" class="topbar-home-link topbar-btn text-center fl"><span>管理权限管理系统</span></a>
     </div>
   </div>
   <div class="topbar-info">
@@ -48,8 +48,8 @@
   <div class="view-sidebar">
     <div class="sidebar-content">
       <!--一级菜单循环从这里开始 ，动态循环显示一级菜单-->
-      <c:forEach var="r" items="${relist}">
-        <c:if test="${r.parentID==null}">
+      <c:forEach var="r" items="${reslist}">
+        <c:if test="${r.parentID==0}">
           <div class="sidebar-nav">
             <div class="sidebar-title">
               <a href="#">
@@ -59,12 +59,12 @@
             </div>
             <ul class="sidebar-trans">
               <!--二级菜单循环从这里开始 ，动态循环显示二级菜单-->
-              <c:forEach var="sec_r" items="${relist}">
-                <c:if test="${sec_r.parentId==r.rid}">
+              <c:forEach var="r1" items="${reslist}">
+                <c:if test="${r1.parentID==r.rid}">
                   <li>
-                    <a href="${sec_r.resurl}">
+                    <a href="${r1.resurl}">
                       <b class="sidebar-icon"><img src="Images/icon_author.png" width="16" height="16"/></b>
-                      <span class="text-normal">${sec_r.rname}</span>
+                      <span class="text-normal">${r1.rname}</span>
                     </a>
                   </li>
                 </c:if>
@@ -83,7 +83,8 @@
         <div class="manage-head">
           <h6 class="layout padding-left manage-head-con">用户管理
             <span class="fr text-small text-normal padding-top">发布时间：2016-07-08</span>
-            <span class="fr margin-large-right padding-top text-small text-normal">最新版本：<em class="text-main">2.4.0.160708</em></span>
+                        <span class="fr margin-large-right padding-top text-small text-normal">最新版本：<em
+                                class="text-main">2.4.0.160708</em></span>
           </h6>
         </div>
       </div>
@@ -107,34 +108,32 @@
                 操作
               </div>
             </div>
-            <div class="tr clearfix border-bottom-none">
-              <c:forEach var="user" items="${userlist}">
-                <div class="tr clearfix border-bottom-none">
-                  <div class="td w20">
-                      ${user.uname}
-                  </div>
-                  <c:if test="${user.rname==null}">
-                    <div class="td w20">
-                      无
-                    </div>
-                  </c:if>
-                  <c:if test="${user.rname!=null}">
-                    <div class="td w20">
-                        ${user.rname}
-                    </div>
-                  </c:if>
-                  <div class="td w20">
-                      ${user.ustatus}
-                  </div>
-                  <div class="td w20">
-                      ${user.createTime}
-                  </div>
-                  <div class="td w20">
-                    <a href="deleteUserById?userId=${user.uid}" class="button-word2 btn_ajax_confirm">删除</a>
-                  </div>
+            <c:forEach var="user" items="${userlist}">
+              <div class="tr clearfix border-bottom-none">
+                <div class="td w20">
+                    ${user.uname}
                 </div>
-              </c:forEach>
-            </div>
+                <c:if test="${user.rname==null}">
+                  <div class="td w20">
+                    无
+                  </div>
+                </c:if>
+                <c:if test="${user.rname!=null}">
+                  <div class="td w20">
+                      ${user.rname}
+                  </div>
+                </c:if>
+                <div class="td w20">
+                    ${user.ustatus}
+                </div>
+                <div class="td w20">
+                    ${user.createTime}
+                </div>
+                <div class="td w20">
+                  <a href="deleteUserById?userId=${user.uid}" class="button-word2 btn_ajax_confirm">删除</a>
+                </div>
+              </div>
+            </c:forEach>
           </div>
         </div>
         <div class="show-page padding-big-right">
@@ -146,7 +145,8 @@
                 <li><a class="next disable">上一页</a></li>
                 <li></li>
                 <li><a class="next disable">下一页</a></li>
-                <li><span class="fl">共<em class="margin-small-left margin-small-right">1</em>页</span></li>
+                <li><span class="fl">共<em class="margin-small-left margin-small-right">1</em>页</span>
+                </li>
               </ul>
             </div>
           </div>

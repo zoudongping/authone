@@ -29,7 +29,7 @@
     <select id="findRname" resultType="Resourcces" parameterType="String">
         select * from resourcces where rname=#{rname}
     </select>
-<select id="findResourccesByUid" resultType="Resourcces" parameterType="int">
+<select id="findResourccesByUid" parameterType="int" resultType="Resourcces">
 SELECT * FROM resourcces
 WHERE rid IN (SELECT resourceid FROM `roleresource` WHERE roleid IN (SELECT  rid FROM urinfo WHERE uid=#{uid}  ) )
 </select>

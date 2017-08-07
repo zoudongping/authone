@@ -27,9 +27,9 @@ public class GetResourcesByUserServlet extends HttpServlet {
         UserinfoDao userinfoDao=SqlSessionHelper.getSqlSession().getMapper(UserinfoDao.class);
         Userinfo userinfo=(Userinfo)request.getSession().getAttribute("user");
         if(userinfo!=null){
-            List<Resourcces> relist=resourccesDao.findResourccesByUid(userinfo.getUid());
-            request.getSession().setAttribute("relist",relist);
-            List<UserInfoVo> userlist=userinfoDao.findAllUser();
+            List<Resourcces> reslist=resourccesDao.findResourccesByUid(userinfo.getUid());
+            request.getSession().setAttribute("reslist", reslist);
+            List<UserInfoVo> userlist = userinfoDao.findAllUser();
             request.setAttribute("userlist",userlist);
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }
