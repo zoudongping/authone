@@ -23,8 +23,8 @@
         select * from userinfo where uname=#{uname} and upass=#{upass}
     </select>
     <select id="findAllUser" resultType="entity.UserInfoVo">
-        SELECT userinfo.*,roleinfo.`rname` FROM userinfo LEFT JOIN urinfo ON userinfo.`uid`=urinfo.`uid`
-			LEFT JOIN roleinfo ON roleinfo.`rid`=urinfo.`rid`
+        SELECT userinfo.*,roleinfo.rname FROM userinfo LEFT JOIN urinfo ON userinfo.uid=urinfo.uid
+			LEFT JOIN roleinfo ON roleinfo.rid=urinfo.rid
     </select>
     <update id="updatePwd" parameterType="Userinfo">
         update userinfo set upass=#{newupass} where uname=#{uname} and upass=#{oldupass}
@@ -34,7 +34,23 @@
         delete from userinfo where uname=#{uname}
     </delete>
 
+    <select id="findUserByUserId" parameterType="java.lang.Integer" resultMap="userinfoMap">
+        SELECT * FROM userinfo A LEFT JOIN weixininfo B ON A.weixinhao=B.weixinhao WHERE a.uid=#{uid}
+    </select>
 
+    <resultMap id="userinfoMap" type="Userinfo">
+        <id column="uid" property="uid"></id>
+        <result column="uname" property="uname"></result>
+        <result column="upass" property="upass"></result>
+        <result column="ustatus" property="ustatus"></result>
+        <result column="createTime" property="createTime"></result>
+
+        <association property="weixinInfo" javaType="entity.WeixinInfo">
+            <id column="weixinhao" property="weixinhao"></id>
+            <result column="weixinicheng" property="weixinicheng"></result>
+            <result column="weixinimage" property="weixinimage"></result>
+        </association>
+    </resultMap>
 
 
 

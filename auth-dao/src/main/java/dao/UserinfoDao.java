@@ -15,5 +15,5 @@ public interface UserinfoDao {
     public int deleteuser(String uname);
     public Userinfo findByUser(Userinfo userinfo);
     public List<UserInfoVo> findAllUser();
-
+    public Userinfo findUserByUserId(int uid);
 }
