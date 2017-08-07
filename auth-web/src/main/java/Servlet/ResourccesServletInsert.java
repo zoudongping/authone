@@ -28,16 +28,18 @@ public class ResourccesServletInsert extends HttpServlet {
         Resourcces r=new Resourcces();
         r.setParentID(Integer.parseInt(parentID));
 
-        r.setResurl("resurl");
-        r.setRname("rname");
+        r.setResurl(resurl);
+        r.setRname(rname);
         r.setResorderno(Integer.parseInt(resorderno) );
         r.setRedsdes(redsdes);
         ResourccesDao dao= SqlSessionHelper.getSqlSession().getMapper(ResourccesDao.class);
         int num = dao.insert(r);
+
         SqlSessionHelper.getSqlSession().commit();
+        System.out.println("受影响行数"+num);
         SqlSessionHelper.closeSession();
         if(num==1){
-            response.sendRedirect("resourcelist");
+            response.sendRedirect("resourceservlet");
         }else{
             response.getWriter().append("Sorry!").close();
         }
