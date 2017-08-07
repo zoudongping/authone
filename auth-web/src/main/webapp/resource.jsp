@@ -83,7 +83,7 @@
         <h6 class="layout padding-left manage-head-con">资源管理平台与发布
         </h6>
         <div class="margin-tb manage-detail-con clearfix">
-          <a class="h5 margin-large-left custom fl" href="toAddResource">新建资源</a>
+          <a class="h5 margin-large-left custom fl" href="addResourcces">新建资源</a>
         </div>
       </div>
     </div>
