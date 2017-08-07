@@ -64,17 +64,17 @@
 			<div class="manage-head">
 				<h6 class="padding-left manage-head-con">新增模块</h6>
 			</div>
-			<form name="setp0" action="#" method="post" autocomplete="off">
+			<form name="setp0" action="addResourcces" method="post" autocomplete="off">
 				<div class="basic-info-detail clearfix">
 
 					<div class="unit-style padding-big-lr clearfix">
 						<h4 class="real-name-head margin-large-top">填写资源信息</h4>
 						<div class="real-name-con height-main margin-top-25">
 							<p class="content-left-zoon">
-								ziy名称
+								资源名称
 							</p>
 							<div class="content-right-zoon">
-								<input class="width-main input" type="text" name="legal_person" datatype="*" value="">
+								<input class="width-main input" type="text" name="rname" datatype="*" value="">
 							</div>
 						</div>
 						<div class="real-name-con height-main margin-top-25">
@@ -82,7 +82,7 @@
 								资源路径
 							</p>
 							<div class="content-right-zoon">
-								<input class="width-main input" type="text" name="legal_idcard_number" datatype="*" value="">
+								<input class="width-main input" type="text" name="resurl" datatype="*" value="">
 							</div>
 						</div>
 						<div class="real-name-con height-main margin-top-25">
@@ -90,7 +90,7 @@
 								上级资源
 							</p>
 							<div class="content-right-zoon">
-								<select class="width-main select" name="resource">
+								<select class="width-main select" name="parentID">
 									<c:forEach items="${firstlist}" var="m">
 										<option value="${m.rid}">${m.rname}</option>
 									</c:forEach>
@@ -102,7 +102,15 @@
 								资源序号
 							</p>
 							<div class="content-right-zoon">
-								<input class="width-main input" type="text" name="legal_idcard_number" datatype="*" value="">
+								<input class="width-main input" type="text" name="resorderno" datatype="*" value="">
+							</div>
+						</div>
+						<div class="real-name-con height-main margin-top-25">
+							<p class="content-left-zoon">
+								资源描述
+							</p>
+							<div class="content-right-zoon">
+								<input class="width-main input" type="text" name="redsdes" datatype="*" value="">
 							</div>
 						</div>
 					</div>
