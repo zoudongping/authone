@@ -33,4 +33,7 @@
 SELECT * FROM resourcces
 WHERE rid IN (SELECT resourceid FROM `roleresource` WHERE roleid IN (SELECT  rid FROM urinfo WHERE uid=#{uid}  ) )
 </select>
+    <select id="findFirstResources" resultType="Resourcces">
+        SELECT  * FROM  Resourcces where parentID IS NULL
+    </select>
 </mapper>
